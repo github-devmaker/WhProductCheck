@@ -1,0 +1,61 @@
+table,
+td,
+th {
+  border: rgba(0, 0, 0, 0.12) 1px solid;
+  vertical-align: middle;
+  font-size: 16px;
+  cursor: pointer;
+}
+th {
+  background: #3f51b5 !important;
+  color:white !important;
+  font-weight:bold;
+}
+tbody tr:hover > td{
+  background: red !important;
+}
+td.styleModel{
+  background-color: #3f51b547;
+  font-weight: bold;
+}
+.box-content {
+  background: white;
+  padding: 1em 2em;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-transform: uppercase;
+  text-align: center;
+  vertical-align: middle;
+}
+.mat-mdc-standard-chip.mat-accent.mat-mdc-chip-selected {
+  --mdc-chip-elevated-container-color: green;
+  --mdc-chip-elevated-disabled-container-color: #198754;
+}
+
+.styleDiff {
+  color: #f44336 !important;
+}
+td:last-child {
+  color:green;
+}
+.styleDiff,
+td:last-child {
+  font-weight: bold;
+}
+::ng-deep .mat-form-field-wrapper {
+  margin-bottom: -1.25em;
+}
+
+.btn-search {
+  font-size: 1.85em;
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+}
+
+th {
+  text-align: center;
+}

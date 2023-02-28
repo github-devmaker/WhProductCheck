@@ -1,0 +1,11 @@
+<div class="container d-flex align-items-center jutify-content-center h-100">
+    <div class="row text-center">
+        <div class="col-12 mt-3 mb-3">
+            <p>WH Production Check</p>
+            <input type="text" class="form-control" placeholder="Enter you id ..." #emcode [(ngModel)]="code" (keyup.enter)="login()" hideKeyboard>
+        </div>
+        <div class="col-12">
+            <button mat-raised-button color = "primary" (click)="login()">Login</button>
+        </div>
+    </div>
+</div> 

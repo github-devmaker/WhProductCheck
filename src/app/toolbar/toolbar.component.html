@@ -1,0 +1,31 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button mat-button (click)="opened=!opened"><mat-icon>menu</mat-icon></button>
+        <span>{{pageName}}</span>
+        <span class="fill-space"></span>
+        <div class="image-container d-flex align-items-center" [matMenuTriggerFor]="menu">
+            <span [(ngModel)]="emcode">{{emcode}}</span>
+            <img class="image clip-circle " [src]="imgUrl">
+        </div>
+        <!-- <button mat-raised-button routerLink="/login">LOGIN</button> -->
+    </mat-toolbar-row>
+
+</mat-toolbar>
+<mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>ออกจากระบบ</span>
+    </button>
+</mat-menu>
+<mat-sidenav-container [hasBackdrop]="true">
+    <mat-sidenav [(opened)]="opened" #sideNav>
+        <mat-list >
+            <ng-container *ngFor="let item of listMenu">
+                <mat-list-item><a (click)="goComponent(item.text)" routerLink="{{item.routeLink}}">{{item.text}}</a></mat-list-item>
+            </ng-container>
+        </mat-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

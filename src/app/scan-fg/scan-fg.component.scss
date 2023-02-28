@@ -1,0 +1,52 @@
+.container{
+    padding: 8px 16px 16px 16px;
+}
+.form-label {
+    margin-bottom: .25rem;
+}
+th,td {
+    padding: 0;
+    font-size: smaller;
+    text-align: center;
+}
+.mat-column-plno {
+    width:  40%;
+}
+.mat-column-scanstatus {
+    width:  25%;
+}
+.mat-column-tool {
+    width:  35%;
+}
+[name=inputPallet]{
+    background-color: #fffca4;
+}
+.c-red {
+    color:red;
+}
+.text-bold {
+    font-weight: bold;
+}
+[ng-reflect-ng-class=showMessagePass],
+.showMessagePass {
+    color:green;
+    font-size: 1.25em;
+    font-weight: bold;
+}
+[ng-reflect-ng-class=showMessageError],
+.showMessageError {
+    color:red;
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+.box-content:nth-child(3) .form-control {
+    font-size: 14px;
+    padding: .375rem .5rem;
+}
+.tag-content {
+    height: 287px;
+}
+[name=inputFg]{
+    background-color: #fffca4;
+}

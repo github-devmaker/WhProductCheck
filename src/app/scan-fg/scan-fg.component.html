@@ -1,0 +1,85 @@
+<form class="example-form">
+    <div class="container">
+        <div class="box-content mb-2">
+            <div class="row">
+                <label class="col-2 col-form-label" align="right">FG</label>
+                <div class="col-10">
+                    <input class="form-control" placeholder="Enter FG Number ..." #inputFg 
+                        (keyup.enter)="checkFG(inputFg.value)" hideKeyboard name="inputFg">
+                </div>
+            </div>
+        </div>
+
+        <div class="box-content">
+            <div class="row mb-2">
+                <div class="col-7">
+                    <label class="form-label">MODEL</label>
+                    <input type="text" class="form-control" [(ngModel)]="modelShow" name="modelShow" disabled readonly>
+                </div>
+                <div class="col-5">
+                    <label class="form-label">PL TYPE</label>
+                    <input type="text" class="form-control" [(ngModel)]="pltypeShow" name="pltypeShow" disabled
+                        readonly>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-12">
+                    <label class="form-label">PL NO</label>
+                    <input type="text" class="form-control" [(ngModel)]="plnoShow" name="plnoShow" disabled readonly>
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <div class="col-6">
+                    <label class="form-label">NWC</label>
+                    <input type="text" class="form-control" [(ngModel)]="nwcShow" name="nwcShow" disabled readonly>
+                </div>
+                <div class="col-6">
+                    <label class="form-label">FWC</label>
+                    <input type="text" class="form-control" [(ngModel)]="fwcShow" name="fwcShow" disabled readonly>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <label class="form-label">WH DATE</label>
+                    <input type="text" class="form-control" [(ngModel)]="dateShow" name="dateShow" disabled readonly>
+                </div>
+                <div class="col-6">
+                    <label class="form-label">WH TIME</label>
+                    <input type="text" class="form-control" [(ngModel)]="timeShow" name="timeShow" disabled readonly>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="!isLoadingResult">
+            <table mat-table [dataSource]="getWHProductCheck" class="mat-elevation-z2">
+                <ng-container matColumnDef="plno">
+                    <th mat-header-cell *matHeaderCellDef> PLNO </th>
+                    <td mat-cell *matCellDef="let element"> {{ element.oModel != '' ? element.oModel : '-'}} <br> <label
+                            class="fw-bold">{{ element.oPlno}}</label></td>
+                </ng-container>
+                <ng-container matColumnDef="nwc">
+                    <th mat-header-cell *matHeaderCellDef> PALLET </th>
+                    <td mat-cell *matCellDef="let element" class="fw-bold"> {{ element.oCount }} <br> {{ element.oPlType
+                        != "" ? element.oPlType : "-" }} </td>
+                </ng-container>
+                <ng-container matColumnDef="tool">
+                    <th mat-header-cell *matHeaderCellDef> SCAN </th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ (element.onwc != "" && element.onwc !== null) ? element.onwc : element.scanstatus }} <br> {{
+                        element.oScanDate }}
+
+                        <!-- <div class="d-flex justify-content-center">
+                <mat-icon [routerLink]="['../pallet','view',element.plno]">search</mat-icon>
+                <mat-icon color="warn" (click)="dialogDelete(element.plno)">delete</mat-icon>
+              </div> -->
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+    </div>
+</form>
