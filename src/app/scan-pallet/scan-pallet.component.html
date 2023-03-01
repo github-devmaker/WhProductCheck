@@ -52,7 +52,7 @@
             <th mat-header-cell *matHeaderCellDef> SCAN </th>
             <td mat-cell *matCellDef="let element">
               {{ (element.onwc != "" && element.onwc !== null) ? (element.onwc + (element.oStatus != "DCI" ? (' (' +  element.oStatus + ')') : '')) : (element.scanstatus) }} <br> {{
-              element.oScanDate }}
+              element.oScanDate  }}
             </td>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
