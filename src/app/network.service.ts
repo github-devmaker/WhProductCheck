@@ -13,7 +13,6 @@ export class networkService {
   baseApiUrl: string = 'http://dciweb2.dci.daikin.co.jp/whserviceapi/';
   constructor(private http: HttpClient) { }
 
-
   getStockCompare(prdType: string, wcno: string, showType: string): Observable<MStockCompare[]> {
     return this.http.get<MStockCompare[]>(this.baseApiUrl + 'WHProductCheck/pallet/compare/' + prdType + '/' + wcno + '/' + showType);
   }
@@ -22,10 +21,9 @@ export class networkService {
     return this.http.get<WHProductCheck[]>(this.baseApiUrl + 'WHProductCheck/pallet/getlist');
   }
 
-
-  updateScaned(plno: string): Observable<any> {
-    return this.http.get<any>(this.baseApiUrl + 'WHProductCheck/pallet/scaned/' + plno);
-  }
+  // updateScaned(plno: string): Observable<any> {
+  //   return this.http.get<any>(this.baseApiUrl + 'WHProductCheck/pallet/scaned/' + plno);
+  // }
 
   getAllPallet(): Observable<WHProductCheck[]> {
     return this.http.get<WHProductCheck[]>(this.baseApiUrl + 'WHProductCheck/pallet/getall');
@@ -39,9 +37,9 @@ export class networkService {
     return this.http.get<WHProductCheck[]>(this.baseApiUrl + 'WHProductCheck/fg/view/' + fgNo);
   }
 
-  addNew(plno: string): Observable<any> {
-    return this.http.get<any>(this.baseApiUrl + 'WHProductCheck/pallet/add/' + plno);
-  }
+  // addNew(plno: string): Observable<any> {
+  //   return this.http.get<any>(this.baseApiUrl + 'WHProductCheck/pallet/add/' + plno);
+  // }
 
   getListPlno(plno: string): Observable<any> {
     return this.http.get<any>(this.baseApiUrl + 'WHProductCheck/pallet/list/' + plno);
@@ -68,4 +66,6 @@ export class networkService {
   login(emcode: string): Observable<any> {
     return this.http.get<any>(this.baseApiUrl + 'Employees/emp/' + emcode);
   }
+
+
 }

@@ -1,6 +1,7 @@
 import { Component,OnInit,ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { CookieService } from 'ngx-cookie-service';
+import { DataService } from '../data.service';
 export interface mListMenu {
   text:string;
   routeLink:string;
@@ -22,10 +23,12 @@ export class ToolbarComponent implements OnInit {
   opened: boolean = false;
   imgUrl:string = '';
   @ViewChild('sideNav',{static:false}) sideNav!:MatSidenav;
-  constructor(private cookie:CookieService) {
+  constructor(private cookie:CookieService,private dataService:DataService) {
     this.emcode = this.cookie.get("code");
     this.imgUrl = 'http://dcidmc.dci.daikin.co.jp/PICTURE/'  + this.emcode  + '.JPG';
-    console.log(this.imgUrl)
+    dataService.changeEmitted$.subscribe(data => {
+      console.log(data);
+    })
   }
   logout() : void{
     this.cookie.set("login","false");

@@ -5,7 +5,7 @@
         <label class="col-3 col-form-label" for="">PALLET</label>
         <div class="col-9">
           <input class="form-control" placeholder="Enter Pallet Number ..." #inputPallet name="inputPallet"
-            (keyup.enter)="scanPallet(inputPallet.value.trim())" hideKeyboard>
+            (keyup.enter)="scanPallet(inputPallet.value.trim())" hideKeyboard (keypress)="addData(inputPallet.value)">
         </div>
       </div>
       <div class="row">

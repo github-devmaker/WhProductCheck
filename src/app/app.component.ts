@@ -10,8 +10,6 @@ export class AppComponent implements OnInit {
   isLogin:boolean = false;
   constructor(private cookie:CookieService){}
   ngOnInit(): void {
-    console.log(this.cookie)
-    console.log(this.cookie.get("login"))
     this.isLogin = JSON.parse(this.cookie.get("login"));
   }
 }

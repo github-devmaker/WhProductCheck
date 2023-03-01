@@ -4,14 +4,23 @@ import { ActivatedRoute } from '@angular/router';
 import { WHProductCheck } from '../models/WHProductCheck.model';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { CookieService } from 'ngx-cookie-service';
+import { DataService } from '../data.service';
 
+export interface Person {
+  name: string;
+  age: number;
+}
 @Component({
   selector: 'app-scan-pallet',
   templateUrl: './scan-pallet.component.html',
   styleUrls: ['./scan-pallet.component.scss']
 })
 
+
+
+
 export class ScanPalletComponent implements OnInit {
+
   emcode: string = "";
   thName: string = "";
   isLoadingResult = true;
@@ -23,10 +32,10 @@ export class ScanPalletComponent implements OnInit {
   setWHProductCheck: WHProductCheck = {}
   showMessage: string = "";
   scaned: boolean = false;
-  numberLocation:number = 1;
-  textLocaltion:string = "A";
+  numberLocation: number = 1;
+  textLocaltion: string = "A";
   showAlert = false;
-  constructor(private network: networkService, private route: ActivatedRoute, private dialog: MatDialog, private cookie: CookieService) { }
+  constructor(private network: networkService, private cookie: CookieService, private dataService: DataService) { }
 
   ngOnInit(): void {
     // this.route.queryParams.subscribe(params => {
@@ -39,6 +48,16 @@ export class ScanPalletComponent implements OnInit {
     // });
     this.getProdCheckAll();
   }
+  addData(newData: string) {
+    //  console.log(mT)
+    // let data = mTest[{
+    //   pallet: newData
+    // }}];
+    this.dataService.emitChange({
+      name: newData,
+      age: this.numberLocation
+    });
+  }
 
   ngAfterViewInit() {
     setTimeout(() => {
@@ -46,7 +65,7 @@ export class ScanPalletComponent implements OnInit {
     }, 250);
   }
 
-  onTextLocaltionChange(textLocaltion:string){
+  onTextLocaltionChange(textLocaltion: string) {
     this.textLocaltion = textLocaltion;
   }
 
@@ -88,7 +107,7 @@ export class ScanPalletComponent implements OnInit {
   // }
 
   scanPallet(plno: string) {
-    if(this.numberLocation == null){
+    if (this.numberLocation == null) {
       alert('กรุณาระบุ เลขพื้นที่');
       return;
     }
@@ -106,8 +125,8 @@ export class ScanPalletComponent implements OnInit {
       plno = plno.substring(0, 15);
     }
 
-    
-    this.network.scanPallet(plno,localtion).subscribe({
+
+    this.network.scanPallet(plno, localtion).subscribe({
       next: (data) => {
         if (data.mes == true) {
           this.showMessage = plno + " SCAN SUCCESS";
